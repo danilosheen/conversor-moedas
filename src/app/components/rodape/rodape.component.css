@@ -1,0 +1,12 @@
+.rodape {
+  height: 100px;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-rodape {
+  color: white;
+  font-size: 30px;
+}
