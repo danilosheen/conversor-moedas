@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { HistoricoComponent } from './pages/historico/historico.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { RodapeComponent } from './components/rodape/rodape.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,8 @@ import { HistoricoComponent } from './pages/historico/historico.component';
     HomeComponent,
     HistoricoComponent,
     PageNotFoundComponent,
+    MenuComponent,
+    RodapeComponent,
   ],
 })
 export class AppComponent {
