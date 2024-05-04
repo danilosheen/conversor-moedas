@@ -5,6 +5,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HistoricoComponent } from './pages/historico/historico.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RodapeComponent } from './components/rodape/rodape.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ExchangeApiService } from './services/exchange-api.service';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +15,14 @@ import { RodapeComponent } from './components/rodape/rodape.component';
   styleUrl: './app.component.css',
   imports: [
     RouterOutlet,
+    HttpClientModule,
     HomeComponent,
     HistoricoComponent,
     PageNotFoundComponent,
     MenuComponent,
     RodapeComponent,
   ],
+  providers: [ExchangeApiService],
 })
 export class AppComponent {
   title = 'conversor-moedas';

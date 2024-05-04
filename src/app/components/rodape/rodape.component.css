@@ -1,6 +1,6 @@
 .rodape {
   height: 100px;
-  background-color: blueviolet;
+  background-color: var(--cor-primaria-bg);
   display: flex;
   justify-content: center;
   align-items: center;
