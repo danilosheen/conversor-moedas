@@ -3,7 +3,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ExchangeApiService } from '../../services/exchange-api.service';
 import { Moedas } from '../../interfaces/imoedas';
-import { resultType } from '../../types/result-type';
+import { resultTypeListagemMoedas } from '../../types/result-type';
 @Component({
   selector: 'table-pagination',
   styleUrl: 'table-pagination.component.css',
@@ -19,14 +19,14 @@ export class TablePaginationExample implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.exchangeApiService.getListaMoedasApi().subscribe((dados: Moedas) => {
-      const m = dados.supported_codes;
-      m.forEach((value) => {
+      const moedas = dados.supported_codes;
+      moedas.forEach((value) => {
         this.listaSiglas.push(value[0]);
         this.listaMoedas.push(value[1]);
       });
 
-      // Monta objetos no formato da constante dados usando as listas de siglas e moedas
-      const objetosMontados: resultType[] = this.listaSiglas.map(
+      // Monta objetos no formato de objeto usando as listas de siglas e moedas
+      const objetosMontados: resultTypeListagemMoedas[] = this.listaSiglas.map(
         (sigla, index) => {
           return { sigla: sigla, moeda: this.listaMoedas[index] };
         }
@@ -38,7 +38,7 @@ export class TablePaginationExample implements OnInit, AfterViewInit {
   }
 
   displayedColumns: string[] = ['sigla', 'moeda'];
-  dataSource = new MatTableDataSource<resultType>();
+  dataSource = new MatTableDataSource<resultTypeListagemMoedas>();
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;

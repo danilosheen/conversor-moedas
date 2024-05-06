@@ -12,23 +12,10 @@ export class ExchangeApiService {
 
   constructor(private http: HttpClient) {}
 
-  getUrlBase() {
-    return this._urlBase;
-  }
-
-  getApiKey() {
-    return this._apiKey;
-  }
-
   getListaMoedasApi() {
     const result = this.http.get<Moedas>(
       `${this._urlBase}/${this._apiKey}/codes`
     );
     return result;
-  }
-
-  getSuportedCodes() {
-    const result = this.getListaMoedasApi();
-    result.subscribe();
   }
 }

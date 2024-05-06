@@ -1,4 +1,4 @@
-export type resultType = {
+export type resultTypeListagemMoedas = {
   sigla: string;
   moeda: string;
 };
