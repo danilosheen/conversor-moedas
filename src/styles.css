@@ -16,13 +16,35 @@
   --cor-texto-primario: #0b2545;
   --cor-texto-secundario: #eef4ed;
   --cor-texto-terciario: #134074;
+  --mdc-filled-text-field-focus-active-indicator-color: #69d4ff;
 }
 
 html,
 body {
-  height: 100%;
+  height: calc(100vh - 160px);
 }
 body {
   margin: 80px auto 0 auto;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-paginator-container {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 110%;
+}
+
+.mat-mdc-paginator-range-actions {
+  flex-wrap: wrap;
+}
+@media (max-width: 400px) {
+  .mat-mdc-paginator-range-label {
+    margin: 0 5px 0 5px !important;
+  }
+
+  .mat-mdc-icon-button.mat-mdc-button-base {
+    padding: 2px !important;
+    width: 38px;
+  }
 }

@@ -1,25 +1,55 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
-    <!-- Sigla Column -->
-    <ng-container matColumnDef="sigla">
-      <th mat-header-cell *matHeaderCellDef>Sigla</th>
-      <td mat-cell *matCellDef="let element">{{ element.sigla }}</td>
-    </ng-container>
+<div class="container">
+  <div class="container-content">
+    <!-- Busca -->
+    <div class="container-mod">
+      <mat-form-field appearance="fill" class="busca">
+        <mat-icon fontIcon="search" matPrefix></mat-icon>
+        <mat-label class="text-dark">Buscar moedas</mat-label>
+        <input
+          matInput
+          [(ngModel)]="busca"
+          (input)="buscarCoins($event)"
+          placeholder="EX: CAD ou Canadian Dollar"
+          #input
+          (keydown.enter)="input.blur()"
+        />
+        <mat-icon
+          (click)="limparBusca()"
+          *ngIf="busca"
+          fontIcon="close"
+          matSuffix
+        ></mat-icon>
+      </mat-form-field>
+    </div>
 
-    <!-- Moeda Column -->
-    <ng-container matColumnDef="moeda">
-      <th mat-header-cell *matHeaderCellDef>Moeda</th>
-      <td mat-cell *matCellDef="let element">{{ element.moeda }}</td>
-    </ng-container>
+    <!-- Table -->
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+    <div class="tabela mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Sigla Column -->
+        <ng-container matColumnDef="sigla">
+          <th mat-header-cell *matHeaderCellDef>Sigla</th>
+          <td mat-cell *matCellDef="let element">{{ element.sigla }}</td>
+        </ng-container>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements"
-  >
-  </mat-paginator>
+        <!-- Moeda Column -->
+        <ng-container matColumnDef="moeda">
+          <th mat-header-cell *matHeaderCellDef>Moeda</th>
+          <td mat-cell *matCellDef="let element">{{ element.moeda }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <!-- Paginator -->
+    <mat-paginator
+      class=""
+      [pageSizeOptions]="[5, 10, 20, 25, 30]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
 </div>

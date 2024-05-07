@@ -4,16 +4,33 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ExchangeApiService } from '../../services/exchange-api.service';
 import { Moedas } from '../../interfaces/imoedas';
 import { resultTypeListagemMoedas } from '../../types/result-type';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'table-pagination',
   styleUrl: 'table-pagination.component.css',
   templateUrl: 'table-pagination.component.html',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule],
+  imports: [
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    NgIf,
+  ],
 })
 export class TablePaginationExample implements OnInit, AfterViewInit {
   private listaSiglas: string[] = [];
   private listaMoedas: string[] = [];
+  busca: string = '';
 
   constructor(private exchangeApiService: ExchangeApiService) {}
 
@@ -35,6 +52,21 @@ export class TablePaginationExample implements OnInit, AfterViewInit {
       // Define a fonte de dados da tabela após montar os objetos
       this.dataSource.data = objetosMontados;
     });
+  }
+
+  limparBusca() {
+    this.busca = '';
+    this.dataSource.filter = this.busca.trim();
+  }
+
+  buscarCoins(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.busca = filterValue;
+    this.dataSource.filter = this.busca.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   displayedColumns: string[] = ['sigla', 'moeda'];

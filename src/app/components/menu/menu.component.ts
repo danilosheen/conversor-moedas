@@ -20,8 +20,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './menu.component.css',
 })
 export class MenuComponent {
-  title = 'Conversor de Moedas';
-  isCollapsed = false;
+  title = 'Conversor de moedas';
+  isCollapsed = true;
   isShowed = '';
 
   constructor() {}

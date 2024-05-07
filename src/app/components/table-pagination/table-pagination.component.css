@@ -1,3 +1,46 @@
+.container {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-mod mat-form-field {
+  width: 300px;
+}
+
+.container-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+  width: 90%;
+}
+
+.tabela {
+  max-width: 1000px;
+  width: 100%;
+}
+
 table {
   width: 100%;
+  overflow-y: auto;
+}
+
+.mat-column-sigla {
+  width: 50%;
+}
+
+.mat-column-moeda {
+  width: 50%;
+}
+
+mat-paginator {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }

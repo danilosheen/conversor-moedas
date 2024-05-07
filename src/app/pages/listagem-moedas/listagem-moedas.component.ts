@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { TablePaginationExample } from '../../components/table-pagination/table-pagination.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-listagem-moedas',
   standalone: true,
   templateUrl: './listagem-moedas.component.html',
   styleUrl: './listagem-moedas.component.css',
-  imports: [TablePaginationExample],
+  imports: [TablePaginationExample, MatSelectModule],
 })
 export class ListagemMoedasComponent {}
