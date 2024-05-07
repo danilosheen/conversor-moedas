@@ -1,1 +1,30 @@
-<p>conversao-moedas works!</p>
+<!-- <input #moedaOrigem type="text" /> -->
+<div>
+  <select
+    class="form-select"
+    aria-label="Moeda de Origem"
+    [(ngModel)]="moedaOrigem"
+  >
+    <option disabled selected>Escolha uma Moeda</option>
+    <option *ngFor="let sigla of siglas; let i = index" [value]="sigla">
+      {{ sigla }} - {{ moedas[i] }}
+    </option>
+  </select>
+
+  <select
+    class="form-select"
+    aria-label="Moeda de Destino"
+    [(ngModel)]="moedaDestino"
+  >
+    <option disabled selected>Escolha uma Moeda</option>
+    <option *ngFor="let sigla of siglas; let i = index" [value]="sigla">
+      {{ sigla }} - {{ moedas[i] }}
+    </option>
+  </select>
+</div>
+
+<input [(ngModel)]="valor" type="text" />
+
+<button (click)="converterValor()" class="btn btn-primary">Converter</button>
+
+<p>O valor da conversão é {{ valorConvertido }} {{ moedaDestino }}</p>

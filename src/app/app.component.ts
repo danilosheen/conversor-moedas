@@ -7,6 +7,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { RodapeComponent } from './components/rodape/rodape.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangeApiService } from './services/exchange-api.service';
+import { ListaSiglasService } from './services/lista-siglas.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ import { ExchangeApiService } from './services/exchange-api.service';
     MenuComponent,
     RodapeComponent,
   ],
-  providers: [ExchangeApiService],
+  providers: [ExchangeApiService, ListaSiglasService],
 })
 export class AppComponent {
   title = 'conversor-moedas';

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Moedas } from '../interfaces/imoedas';
+import { IConversor } from '../interfaces/iresponse-api-convert';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +18,12 @@ export class ExchangeApiService {
       `${this._urlBase}/${this._apiKey}/codes`
     );
     return result;
+  }
+
+  conversorMoedas(moedaOrigem: string, moedaDestino: string, valor: number) {
+    const respostaApiConvert = this.http.get<IConversor>(
+      `${this._urlBase}/${this._apiKey}/pair/${moedaOrigem}/${moedaDestino}/${valor}`
+    );
+    return respostaApiConvert;
   }
 }
