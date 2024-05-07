@@ -1,12 +1,16 @@
 .rodape {
-  height: 100px;
+  height: 80px;
   background-color: var(--cor-primaria-bg);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.rodape p {
+  margin: 0;
+}
+
 .content-rodape {
   color: white;
-  font-size: 30px;
+  font-size: 18px;
 }
