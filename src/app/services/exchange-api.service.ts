@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Moedas } from '../interfaces/imoedas';
 import { IConversor } from '../interfaces/iresponse-api-convert';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +9,10 @@ import { Observable } from 'rxjs';
 export class ExchangeApiService {
   private _apiKey: string = 'c83269fdccca8c27a06fa98d';
   private _urlBase: string = 'https://v6.exchangerate-api.com/v6';
-  responseApiConvert!: Observable<IConversor>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log('executei 1');
+  }
 
   getListaMoedasApi() {
     const result = this.http.get<Moedas>(
@@ -25,11 +25,6 @@ export class ExchangeApiService {
     const respostaApiConvert = this.http.get<IConversor>(
       `${this._urlBase}/${this._apiKey}/pair/${moedaOrigem}/${moedaDestino}/${valor}`
     );
-    this.responseApiConvert = respostaApiConvert;
     return respostaApiConvert;
-  }
-
-  getResponseApiConvert() {
-    return this.responseApiConvert;
   }
 }

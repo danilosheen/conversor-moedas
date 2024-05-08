@@ -10,6 +10,7 @@ export class ListaSiglasService implements OnInit {
   private listaMoedas: string[] = [];
 
   constructor(private exchangeApiService: ExchangeApiService) {
+    console.log('executei 2');
     this.exchangeApiService.getListaMoedasApi().subscribe((dados: Moedas) => {
       const moedas = dados.supported_codes;
       moedas.forEach((value: string[]) => {

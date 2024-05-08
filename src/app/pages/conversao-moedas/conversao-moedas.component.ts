@@ -5,6 +5,7 @@ import { Moedas } from '../../interfaces/imoedas';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { ListaSiglasService } from '../../services/lista-siglas.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-conversao-moedas',
@@ -20,16 +21,20 @@ export class ConversaoMoedasComponent implements OnInit {
   valor: string = '';
   siglas: string[] = [];
   moedas: string[] = [];
-  response!: IConversor;
 
   constructor(
     private conversorApi: ExchangeApiService,
-    private listaSiglasService: ListaSiglasService
+    private listaSiglasService: ListaSiglasService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
     this.siglas = this.listaSiglasService.getListaSiglas();
     this.moedas = this.listaSiglasService.getListaMoedas();
+  }
+
+  todosCamposPreenchidos(): boolean {
+    return !!this.moedaOrigem && !!this.moedaDestino && !!this.valor;
   }
 
   converterValor() {
@@ -41,12 +46,9 @@ export class ConversaoMoedasComponent implements OnInit {
       )
       .subscribe((dados: IConversor) => {
         this.valorConvertido = parseFloat(dados.conversion_result.toFixed(2));
-        this.response = dados;
+        console.log(dados);
+        this.localStorageService.salvarConversao(dados, this.valor, new Date());
         return this.valorConvertido;
       });
-  }
-
-  getResponseCompleta() {
-    return this.response;
   }
 }

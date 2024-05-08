@@ -1,1 +1,28 @@
-<h1>Página de histórico</h1>
+<div class="container">
+  <div class="container-content">
+    <div
+      *ngFor="let conversao of conversoes; let i = index"
+      class="card w-75 mb-3"
+    >
+      <div class="card-body">
+        <div class="d-flex justify-content-center mb-3 card-header">
+          <h5 class="card-title">Conversão {{ i + 1 }}</h5>
+        </div>
+        <p class="card-text">
+          Data: {{ conversao.data }}<br />
+          Hora: {{ conversao.hora }} <br />
+          Valor Informado: {{ conversao.valor }}<br />
+          Moeda Selecionada: {{ conversao.moedaOrigem }}<br />
+          Moeda Convertida: {{ conversao.moedaDestino }}<br />
+          Valor convertido: {{ conversao.resultado }}<br />
+          Taxa de conversão: {{ conversao.taxa }}<br />
+        </p>
+        <div class="d-flex justify-content-center card-footer">
+          <button class="btn btn-danger" (click)="removerConversao(i)">
+            Remover
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
