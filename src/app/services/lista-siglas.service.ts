@@ -16,11 +16,6 @@ export class ListaSiglasService implements OnInit {
         this.listaSiglas.push(value[0]);
         this.listaMoedas.push(value[1]);
       });
-
-      // this.listaSiglas.map((sigla, index) => {
-      //   this.listaSiglas[index] = sigla;
-      // });
-      // console.log(this.listaSiglas);
     });
   }
 
