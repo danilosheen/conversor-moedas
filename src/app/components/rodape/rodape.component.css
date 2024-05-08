@@ -11,6 +11,13 @@
 }
 
 .content-rodape {
-  color: white;
-  font-size: 18px;
+  color: var(--cor-texto-secundario);
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.content-rodape a {
+  color: var(--cor-texto-secundario);
+  font-weight: 500;
+  text-decoration: none;
 }
