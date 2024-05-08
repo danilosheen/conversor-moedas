@@ -1,30 +1,59 @@
 <!-- <input #moedaOrigem type="text" /> -->
-<div>
-  <select
-    class="form-select"
-    aria-label="Moeda de Origem"
-    [(ngModel)]="moedaOrigem"
-  >
-    <option disabled selected>Escolha uma Moeda</option>
-    <option *ngFor="let sigla of siglas; let i = index" [value]="sigla">
-      {{ sigla }} - {{ moedas[i] }}
-    </option>
-  </select>
+<div class="container">
+  <div class="container-content">
+    <div class="container-content-entradas">
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="moedaOrigem">Origem</label>
+        <select
+          id="moedaOrigem"
+          class="form-select"
+          aria-label="Moeda de Origem"
+          [(ngModel)]="moedaOrigem"
+        >
+          <option selected disabled>Escolha uma Moeda</option>
+          <option *ngFor="let sigla of siglas; let i = index" [value]="sigla">
+            {{ sigla }} - {{ moedas[i] }}
+          </option>
+        </select>
+      </div>
 
-  <select
-    class="form-select"
-    aria-label="Moeda de Destino"
-    [(ngModel)]="moedaDestino"
-  >
-    <option disabled selected>Escolha uma Moeda</option>
-    <option *ngFor="let sigla of siglas; let i = index" [value]="sigla">
-      {{ sigla }} - {{ moedas[i] }}
-    </option>
-  </select>
+      <!-- select destino -->
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="moedaOrigem">Destino</label>
+        <select
+          class="form-select"
+          aria-label="Moeda de Destino"
+          [(ngModel)]="moedaDestino"
+        >
+          <option selected disabled>Escolha outra Moeda</option>
+          <option *ngFor="let sigla of siglas; let i = index" [value]="sigla">
+            {{ sigla }} - {{ moedas[i] }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- campo entrada -->
+    <input
+      class="form-control input-valor"
+      id="input-valor"
+      type="number"
+      [(ngModel)]="valor"
+      placeholder="Ex: 100.00 "
+      aria-label="Valor a ser convertido"
+    />
+
+    <!-- converter -->
+    <button (click)="converterValor()" class="btn button-convert">
+      Converter
+    </button>
+
+    <!-- apresentação dos dados -->
+    @if (valorConvertido != 0) {
+    <p>
+      O valor {{ valor }} {{ moedaOrigem }} é equivalente a
+      {{ valorConvertido }} {{ moedaDestino }}
+    </p>
+    }
+  </div>
+  <!-- select origem -->
 </div>
-
-<input [(ngModel)]="valor" type="text" />
-
-<button (click)="converterValor()" class="btn btn-primary">Converter</button>
-
-<p>O valor da conversão é {{ valorConvertido }} {{ moedaDestino }}</p>

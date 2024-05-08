@@ -1,0 +1,36 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.container-content-entradas {
+  display: flex;
+  gap: 30px;
+}
+
+.input-valor {
+  max-width: 500px;
+}
+
+.button-convert {
+  background-color: var(--cor-primaria-bg);
+  color: var(--cor-quartenaria-bg);
+  padding: 6px 20px;
+}
+
+@media (max-width: 450px) {
+  .container-content-entradas {
+    flex-direction: column;
+  }
+}
