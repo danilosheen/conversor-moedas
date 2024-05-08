@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { NgIf } from '@angular/common';
 import { ExchangeApiService } from '../../services/exchange-api.service';
+import { FormsModule } from '@angular/forms';
 import { Moedas } from '../../interfaces/imoedas';
 import { resultTypeListagemMoedas } from '../../types/result-type';
 
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { NgIf } from '@angular/common';
 @Component({
   selector: 'table-pagination',
   styleUrl: 'table-pagination.component.css',
@@ -30,6 +30,7 @@ import { NgIf } from '@angular/common';
 export class TablePaginationExample implements OnInit, AfterViewInit {
   private listaSiglas: string[] = [];
   private listaMoedas: string[] = [];
+  private objetosMontados: resultTypeListagemMoedas[] = [];
   busca: string = '';
 
   constructor(private exchangeApiService: ExchangeApiService) {}
@@ -43,14 +44,12 @@ export class TablePaginationExample implements OnInit, AfterViewInit {
       });
 
       // Monta objetos no formato de objeto usando as listas de siglas e moedas
-      const objetosMontados: resultTypeListagemMoedas[] = this.listaSiglas.map(
-        (sigla, index) => {
-          return { sigla: sigla, moeda: this.listaMoedas[index] };
-        }
-      );
+      this.objetosMontados = this.listaSiglas.map((sigla, index) => {
+        return { sigla: sigla, moeda: this.listaMoedas[index] };
+      });
 
       // Define a fonte de dados da tabela após montar os objetos
-      this.dataSource.data = objetosMontados;
+      this.dataSource.data = this.objetosMontados;
     });
   }
 
