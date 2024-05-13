@@ -3,6 +3,9 @@
     <div
       *ngFor="let conversao of conversoes; let i = index"
       class="card w-75 mb-3"
+      [ngClass]="{
+        'valor-maior-mil': isValorConvertidoMaiorQueMil(conversao)
+      }"
     >
       <div class="card-body">
         <div class="d-flex justify-content-center mb-3 card-header">
@@ -18,9 +21,11 @@
           Taxa de conversão: {{ conversao.taxa }}<br />
         </p>
         <div class="d-flex justify-content-center card-footer">
-          <button class="btn btn-danger" (click)="removerConversao(i)">
+          <app-modal-dialog [cardTitleIndex]="i"></app-modal-dialog>
+          <!-- <button class="btn btn-danger" (click)="removerConversao(i)">
             Remover
-          </button>
+          </button> -->
+          <!-- <app-modal-dialog></app-modal-dialog> -->
         </div>
       </div>
     </div>
