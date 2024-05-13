@@ -26,7 +26,6 @@ export class LocalStorageService {
 
     // Adiciona a nova conversão ao array de conversões
     conversoesSalvas.push(novaConversao);
-    console.log(conversoesSalvas);
 
     // Armazena o array atualizado no localStorage
     localStorage.setItem('conversoes', JSON.stringify(conversoesSalvas));
