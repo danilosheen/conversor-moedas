@@ -18,6 +18,6 @@ export class HistoricoComponent {
   }
 
   isValorConvertidoMaiorQueMil(conversao: any): boolean {
-    return conversao.valor >= 1000;
+    return conversao.valor > 1000;
   }
 }
