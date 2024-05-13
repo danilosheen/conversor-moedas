@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.valor-maior-mil {
+.valor-maior-igual-mil {
   background-color: var(--cor-terciaria-bg);
   color: var(--cor-texto-secundario);
 }

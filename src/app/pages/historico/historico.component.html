@@ -4,7 +4,7 @@
       *ngFor="let conversao of conversoes; let i = index"
       class="card w-75 mb-3"
       [ngClass]="{
-        'valor-maior-mil': isValorConvertidoMaiorQueMil(conversao)
+        'valor-maior-igual-mil': isValorConvertidoMaiorQueMil(conversao)
       }"
     >
       <div class="card-body">
