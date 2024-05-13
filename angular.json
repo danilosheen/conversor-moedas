@@ -29,6 +29,7 @@
           "configurations": {
             "production": {
               "optimization": {
+                "scripts": true,
                 "styles": {
                   "minify": true,
                   "inlineCritical": false
@@ -47,9 +48,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
