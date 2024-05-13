@@ -23,18 +23,31 @@
     </div>
 
     <!-- Table -->
-
     <div class="tabela mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSource" matSort>
         <!-- Sigla Column -->
         <ng-container matColumnDef="sigla">
-          <th mat-header-cell *matHeaderCellDef>Sigla</th>
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Classificar por sigla"
+          >
+            Sigla
+          </th>
           <td mat-cell *matCellDef="let element">{{ element.sigla }}</td>
         </ng-container>
 
         <!-- Moeda Column -->
         <ng-container matColumnDef="moeda">
-          <th mat-header-cell *matHeaderCellDef>Moeda</th>
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Classificar por moeda"
+          >
+            Moeda
+          </th>
           <td mat-cell *matCellDef="let element">{{ element.moeda }}</td>
         </ng-container>
 

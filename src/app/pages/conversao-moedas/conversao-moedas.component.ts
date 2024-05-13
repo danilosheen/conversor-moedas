@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExchangeApiService } from '../../services/exchange-api.service';
 import { IConversor } from '../../interfaces/iresponse-api-convert';
-import { Moedas } from '../../interfaces/imoedas';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { ListaSiglasService } from '../../services/lista-siglas.service';
@@ -46,7 +45,6 @@ export class ConversaoMoedasComponent implements OnInit {
       )
       .subscribe((dados: IConversor) => {
         this.valorConvertido = parseFloat(dados.conversion_result.toFixed(2));
-        console.log(dados);
         this.localStorageService.salvarConversao(dados, this.valor, new Date());
         return this.valorConvertido;
       });

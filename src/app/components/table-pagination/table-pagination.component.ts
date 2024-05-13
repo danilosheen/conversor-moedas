@@ -8,9 +8,11 @@ import { resultTypeListagemMoedas } from '../../types/result-type';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 @Component({
   selector: 'table-pagination',
   styleUrl: 'table-pagination.component.css',
@@ -21,10 +23,13 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatSortModule,
+    MatSort,
     MatInputModule,
     MatSelectModule,
     FormsModule,
     NgIf,
+    MatSort,
   ],
 })
 export class TablePaginationExample implements OnInit, AfterViewInit {
@@ -33,7 +38,16 @@ export class TablePaginationExample implements OnInit, AfterViewInit {
   private objetosMontados: resultTypeListagemMoedas[] = [];
   busca: string = '';
 
-  constructor(private exchangeApiService: ExchangeApiService) {}
+  displayedColumns: string[] = ['sigla', 'moeda'];
+  dataSource = new MatTableDataSource<resultTypeListagemMoedas>();
+
+  constructor(
+    private exchangeApiService: ExchangeApiService,
+    private _liveAnnouncer: LiveAnnouncer
+  ) {}
+
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
     this.exchangeApiService.getListaMoedasApi().subscribe((dados: Moedas) => {
@@ -68,13 +82,8 @@ export class TablePaginationExample implements OnInit, AfterViewInit {
     }
   }
 
-  displayedColumns: string[] = ['sigla', 'moeda'];
-  dataSource = new MatTableDataSource<resultTypeListagemMoedas>();
-
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }
