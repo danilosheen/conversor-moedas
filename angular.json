@@ -47,7 +47,6 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all",
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true
