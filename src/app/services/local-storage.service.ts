@@ -12,11 +12,20 @@ export class LocalStorageService {
     let conversoesSalvas = JSON.parse(
       localStorage.getItem('conversoes') || '[]'
     );
+    const dia = data.getDate();
+    const mes =
+      data.getMonth() + 1 < 10
+        ? `0${data.getMonth() + 1}`
+        : data.getMonth() + 1;
+    const ano = data.getFullYear();
+    const horas = data.getHours();
+    const minutos =
+      data.getMinutes() < 10 ? `0${data.getMinutes()}` : data.getMinutes();
 
     // Cria um novo objeto de conversão
     const novaConversao = {
-      data: `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`,
-      hora: `${data.getHours()}:${data.getMinutes()}`,
+      data: `${dia}/${mes}/${ano}`,
+      hora: `${horas}:${minutos}`,
       valor: valor,
       moedaOrigem: conversao.base_code,
       moedaDestino: conversao.target_code,
@@ -49,5 +58,11 @@ export class LocalStorageService {
       // Atualiza a página
       window.location.reload();
     }
+  }
+
+  removerHistorico() {
+    localStorage.removeItem('conversoes');
+    // Atualiza a página
+    window.location.reload();
   }
 }

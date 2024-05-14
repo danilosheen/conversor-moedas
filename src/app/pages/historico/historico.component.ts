@@ -4,6 +4,7 @@ import { NgFor, NgIf, NgClass } from '@angular/common';
 import { ExchangeApiService } from '../../services/exchange-api.service';
 
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { ModalDialogComponent } from '../../components/modal-dialog/modal-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -14,6 +15,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 
 import { historyTable } from '../../types/history-table';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-historico',
   standalone: true,
@@ -33,10 +35,13 @@ import { historyTable } from '../../types/history-table';
     MatSortModule,
     MatSort,
     MatSelectModule,
+    MatButtonModule,
   ],
 })
 export class HistoricoComponent {
-  private objetosMontados: historyTable[] = [];
+  historyDelete: boolean = false;
+  conversionDelete: boolean = false;
+
   displayedColumns: string[] = [
     'data',
     'hora',
@@ -52,21 +57,55 @@ export class HistoricoComponent {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private dialog: MatDialog
+  ) {}
   conversoes = JSON.parse(localStorage.getItem('conversoes') || '[]');
 
   ngOnInit(): void {
-    console.log(this.conversoes);
     this.dataSource.data = this.conversoes;
+  }
+
+  exibirDialogoExclusaoConversao(index: number) {
+    const dialogRef = this.dialog.open(ModalDialogComponent, {
+      data: 'Você tem certeza de que deseja remover esta conversão?',
+    });
+
+    dialogRef.afterClosed().subscribe((resultado: boolean) => {
+      if (resultado) {
+        this.removerConversao(index);
+      }
+    });
+  }
+
+  exibirDialogoExclusaoHistorico() {
+    const dialogRef = this.dialog.open(ModalDialogComponent, {
+      data: 'Você tem certeza de que deseja remover todo o histórico?',
+    });
+
+    dialogRef.afterClosed().subscribe((resultado: boolean) => {
+      if (resultado) {
+        this.removerHistorico();
+      }
+    });
   }
 
   removerConversao(index: number) {
     this.localStorageService.removerConversao(index);
   }
 
-  isValorConvertidoMaiorQueMil(conversao: any): boolean {
-    return conversao.valor > 1000;
+  removerHistorico() {
+    this.localStorageService.removerHistorico();
   }
+
+  isValorMaiorQueMil(valor: any): boolean {
+    return valor.valor > 1000;
+  }
+
+  // isValorMaiorQueMilTable() {
+  //   return v;
+  // }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
