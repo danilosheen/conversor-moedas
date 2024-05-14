@@ -4,7 +4,7 @@
       *ngFor="let conversao of conversoes; let i = index"
       class="card w-75 mb-3 card-mobile"
       [ngClass]="{
-        'valor-maior-igual-mil': isValorConvertidoMaiorQueMil(conversao)
+        'valor-maior-igual-mil': isValorMaiorQueMil(conversao)
       }"
     >
       <!-- Card mobile -->
@@ -22,7 +22,13 @@
           Taxa de conversão: {{ conversao.taxa }}<br />
         </p>
         <div class="d-flex justify-content-center card-footer">
-          <app-modal-dialog [cardTitleIndex]="i"></app-modal-dialog>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="exibirDialogoExclusaoConversao(i)"
+          >
+            Remover
+          </button>
         </div>
       </div>
     </div>
@@ -66,7 +72,16 @@
             >
               Valor
             </th>
-            <td mat-cell *matCellDef="let element">{{ element.valor }}</td>
+            <td
+              mat-cell
+              #valor
+              *matCellDef="let element"
+              [ngClass]="{
+                'valor-maior-igual-mil': isValorMaiorQueMil(element)
+              }"
+            >
+              {{ element.valor }}
+            </td>
           </ng-container>
 
           <!-- Moeda Selecionada -->
@@ -109,7 +124,9 @@
             >
               Resultado
             </th>
-            <td mat-cell *matCellDef="let element">{{ element.resultado }}</td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.resultado }}
+            </td>
           </ng-container>
 
           <!-- Taxa -->
@@ -129,7 +146,12 @@
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef>Ações</th>
             <td mat-cell *matCellDef="let element; let i = index">
-              <mat-icon color="warn">delete</mat-icon>
+              <mat-icon
+                class="button-remove"
+                color="warn"
+                (click)="exibirDialogoExclusaoConversao(i)"
+                >delete</mat-icon
+              >
             </td>
           </ng-container>
 
@@ -138,5 +160,13 @@
         </table>
       </div>
     </div>
+    <button
+      class="btn-apagar-tudo"
+      mat-raised-button
+      color="warn"
+      (click)="exibirDialogoExclusaoHistorico()"
+    >
+      Apagar tudo
+    </button>
   </div>
 </div>

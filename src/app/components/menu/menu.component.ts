@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -26,7 +26,7 @@ export class MenuComponent {
 
   constructor() {}
 
-  toggleNavbar() {
+  fecharNavbar() {
     if (window.innerWidth < 992) {
       this.isCollapsed = !this.isCollapsed;
     }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" routerLink="/" (click)="toggleNavbar()">
+    <a class="navbar-brand" routerLink="/" (click)="fecharNavbar()">
       <mat-icon class="nav-brand-icon">change_circle</mat-icon>
       <span>{{ title }}</span>
     </a>
@@ -27,7 +27,7 @@
             class="nav-link"
             routerLink="/"
             routerLinkActive="router-link-active"
-            (click)="toggleNavbar()"
+            (click)="fecharNavbar()"
             [routerLinkActiveOptions]="{ exact: true }"
             >Home</a
           >
@@ -37,7 +37,7 @@
             class="nav-link"
             routerLink="/moedas"
             routerLinkActive="router-link-active"
-            (click)="toggleNavbar()"
+            (click)="fecharNavbar()"
             [routerLinkActiveOptions]="{ exact: true }"
             >Listagem de Moedas</a
           >
@@ -47,7 +47,7 @@
             class="nav-link"
             routerLink="/conversor"
             routerLinkActive="router-link-active"
-            (click)="toggleNavbar()"
+            (click)="fecharNavbar()"
             [routerLinkActiveOptions]="{ exact: true }"
             >Conversão de Moedas</a
           >
@@ -57,7 +57,7 @@
             class="nav-link"
             routerLink="/historico"
             routerLinkActive="router-link-active"
-            (click)="toggleNavbar()"
+            (click)="fecharNavbar()"
             [routerLinkActiveOptions]="{ exact: true }"
             >Histórico de Conversões</a
           >
