@@ -8,16 +8,36 @@
 .container-content {
   width: 80%;
   height: 90%;
-  max-width: 500px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+table thead th {
+  text-align: center;
+}
+
 .valor-maior-igual-mil {
   background-color: var(--cor-terciaria-bg);
   color: var(--cor-texto-secundario);
+}
+
+.card-mobile {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .container-content {
+    max-width: 500px;
+  }
+  .card-mobile {
+    display: flex;
+  }
+
+  .table-desktop {
+    display: none;
+  }
 }
 
 @media (max-width: 460px) {

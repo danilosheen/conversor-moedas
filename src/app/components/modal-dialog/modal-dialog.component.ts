@@ -1,39 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   MatDialog,
-  MatDialogRef,
   MatDialogActions,
   MatDialogClose,
   MatDialogTitle,
   MatDialogContent,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { A11yModule } from '@angular/cdk/a11y';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { DialogAnimationsExampleDialog } from './dialog-animations/dialog-animations.component';
-
-// @Component({
-//   selector: 'dialog-animations-example-dialog',
-//   templateUrl: 'dialog-animations-example-dialog.html',
-//   standalone: true,
-//   imports: [
-//     MatButtonModule,
-//     MatDialogActions,
-//     MatDialogClose,
-//     MatDialogTitle,
-//     MatDialogContent,
-//     A11yModule,
-//   ],
-// })
-// export class DialogAnimationsExampleDialog {
-//   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
-
-//   @Output() public onYesClicked: EventEmitter<void> = new EventEmitter();
-
-//   yesClicked() {
-//     this.onYesClicked.emit();
-//   }
-// }
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-modal-dialog',
@@ -44,6 +20,7 @@ import { DialogAnimationsExampleDialog } from './dialog-animations/dialog-animat
     MatDialogActions,
     MatDialogClose,
     MatDialogTitle,
+    MatIconModule,
   ],
   templateUrl: './modal-dialog.component.html',
   styleUrl: './modal-dialog.component.css',
@@ -67,6 +44,8 @@ export class ModalDialogComponent {
     });
     ref.componentInstance.onYesClicked.subscribe((event) => {
       this.localStorageService.removerConversao(this.cardTitleIndex);
+      console.log(this.cardTitleIndex);
+      console.log('fui clicado');
     });
   }
 }

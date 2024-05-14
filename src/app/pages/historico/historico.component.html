@@ -2,11 +2,12 @@
   <div class="container-content">
     <div
       *ngFor="let conversao of conversoes; let i = index"
-      class="card w-75 mb-3"
+      class="card w-75 mb-3 card-mobile"
       [ngClass]="{
         'valor-maior-igual-mil': isValorConvertidoMaiorQueMil(conversao)
       }"
     >
+      <!-- Card mobile -->
       <div class="card-body">
         <div class="d-flex justify-content-center mb-3 card-header">
           <h5 class="card-title">Conversão {{ i + 1 }}</h5>
@@ -23,6 +24,118 @@
         <div class="d-flex justify-content-center card-footer">
           <app-modal-dialog [cardTitleIndex]="i"></app-modal-dialog>
         </div>
+      </div>
+    </div>
+    <!-- table desktop -->
+    <div class="table-desktop">
+      <div class="tabela mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!-- Data Conversão -->
+          <ng-container matColumnDef="data">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              sortActionDescription="Classificar por data"
+            >
+              Data
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.data }}</td>
+          </ng-container>
+
+          <!-- Hora Conversão -->
+          <ng-container matColumnDef="hora">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              sortActionDescription="Classificar por hora"
+            >
+              Hora
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.hora }}</td>
+          </ng-container>
+
+          <!-- Valor Informado -->
+          <ng-container matColumnDef="valor">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              sortActionDescription="Classificar por valor"
+            >
+              Valor
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.valor }}</td>
+          </ng-container>
+
+          <!-- Moeda Selecionada -->
+          <ng-container matColumnDef="moedaOrigem">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              sortActionDescription="Classificar por moedaOrigem"
+            >
+              Moeda Selecionada
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.moedaOrigem }}
+            </td>
+          </ng-container>
+
+          <!-- Moeda Convertida -->
+          <ng-container matColumnDef="moedaDestino">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              sortActionDescription="Classificar por moedaDestino"
+            >
+              Moeda Convertida
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.moedaDestino }}
+            </td>
+          </ng-container>
+
+          <!-- Resultado -->
+          <ng-container matColumnDef="resultado">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              sortActionDescription="Classificar por resultado"
+            >
+              Resultado
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.resultado }}</td>
+          </ng-container>
+
+          <!-- Taxa -->
+          <ng-container matColumnDef="taxa">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+              sortActionDescription="Classificar por taxa"
+            >
+              Taxa
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.taxa }}</td>
+          </ng-container>
+
+          <!-- Ações -->
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef>Ações</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <mat-icon color="warn">delete</mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
       </div>
     </div>
   </div>

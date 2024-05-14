@@ -17,11 +17,11 @@ export class LocalStorageService {
     const novaConversao = {
       data: `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`,
       hora: `${data.getHours()}:${data.getMinutes()}`,
+      valor: valor,
       moedaOrigem: conversao.base_code,
       moedaDestino: conversao.target_code,
       resultado: conversao.conversion_result,
       taxa: conversao.conversion_rate,
-      valor: valor,
     };
 
     // Adiciona a nova conversão ao array de conversões
