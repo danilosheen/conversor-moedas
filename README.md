@@ -1,27 +1,50 @@
-# ConversorMoedas
+# Atividade #4 como proposta de apredizado dos conceitos de consumo de API com Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+## Licença
 
-## Development server
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/danilosheen/API-PSWEBII/blob/main/LICENSE)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Sobre o projeto
 
-## Code scaffolding
+Projeto proposto como atividade de nivelamento e apresentação elaborada pela iUUL
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologias utilizadas
 
-## Build
+[![Tecnologias](https://skillicons.dev/icons?i=angular,ts,html,css,nodejs)](https://skillicons.dev)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Como rodar o projeto
 
-## Running unit tests
+### Pré-requisitos
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular CLI versão ^17.2.0
 
-## Running end-to-end tests
+### Como executar
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- 1º Abra o terminal na raiz do projeto e execute o comando:
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- 2º Execute o comando abaixo para iniciar a aplicação:
+
+```bash
+ng serve
+```
+
+- 3º Abra o navegador no endereço http://localhost:4200/
+
+## Link do Trello utilizado como organização de atividades
+
+<a href="https://trello.com/invite/b/ERz1No01/ATTI960ddc926e379a51c7988f26e9595e97B72C2F30/desafio-4-conversor-de-moedas" target="_blank">Clique aqui para abrir o trello</a>
+
+### Autor
+
+<a href="https://github.com/danilosheen/">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/49424200?v=4" target="_blank" width="100px;" alt=""/>
+ <br />
+ <sub><b>Danilo Ferreira</b></sub></a> <a href="https://github.com/danilosheen" title="GitHub"></a>
+
+Entre em contato!
+
+[![Linkedin Badge](https://img.shields.io/badge/-Danilo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/danilo-ferreira-b56969194/)](https://www.linkedin.com/in/danilo-ferreira-b56969194/) [![Gmail Badge](https://img.shields.io/badge/-c.danilo.f.silva@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:c.danilo.f.silva@gmail.com)](mailto:c.danilo.f.silva@gmail.com)
