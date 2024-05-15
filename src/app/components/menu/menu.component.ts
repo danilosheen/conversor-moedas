@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NgClass } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
@@ -8,14 +6,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [
-    HttpClientModule,
-    MatIconModule,
-    RouterLink,
-    RouterLinkActive,
-    NgbCollapseModule,
-    NgClass,
-  ],
+  imports: [MatIconModule, RouterLink, RouterLinkActive, NgbCollapseModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
 })

@@ -3,16 +3,16 @@ import { NgIf } from '@angular/common';
 import { ExchangeApiService } from '../../services/exchange-api.service';
 import { FormsModule } from '@angular/forms';
 import { Moedas } from '../../interfaces/imoedas';
-import { resultTypeListagemMoedas } from '../../types/result-type';
 
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+
+import { resultTypeListagemMoedas } from '../../types/result-type';
 @Component({
   selector: 'table-pagination',
   styleUrl: 'table-pagination.component.css',
@@ -41,10 +41,7 @@ export class TablePaginationExample implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['sigla', 'moeda'];
   dataSource = new MatTableDataSource<resultTypeListagemMoedas>();
 
-  constructor(
-    private exchangeApiService: ExchangeApiService,
-    private _liveAnnouncer: LiveAnnouncer
-  ) {}
+  constructor(private exchangeApiService: ExchangeApiService) {}
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

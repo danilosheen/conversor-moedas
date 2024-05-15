@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { NgFor, NgIf, NgClass } from '@angular/common';
-import { ExchangeApiService } from '../../services/exchange-api.service';
 
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -102,10 +101,6 @@ export class HistoricoComponent {
   isValorMaiorQueMil(valor: any): boolean {
     return valor.valor > 1000;
   }
-
-  // isValorMaiorQueMilTable() {
-  //   return v;
-  // }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
